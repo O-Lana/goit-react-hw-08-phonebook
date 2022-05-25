@@ -1,4 +1,5 @@
-import { lazy, Suspense } from 'react';
+// import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 
@@ -27,9 +28,16 @@ export const App = () => {
           {/* <Route path="register" element={<RegisterView />} /> */}
           {/* <Route path="login" element={<LoginView />} /> */}
           {/* <Route path="contacts" element={<ContactsView />} /> */}
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Route>
       </Routes>
     </Suspense>
   );
 };
+
+//TODO
+// /register 
+// /login 
+// /contacts 
+// навигационные ссылки для перехода по маршрутам.
+// публичные и приватные маршруты.

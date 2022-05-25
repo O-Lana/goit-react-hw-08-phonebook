@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import { AppBar } from '../AppBar/AppBar';
-// import { Wrapper } from './Layout.styled'
+import { Wrapper } from './Layout.styled'
 
 export const Layout = () => {
     return (
         <>
             <AppBar />
-            <div>
+            <Wrapper>
                 <Outlet />
-            </div>
+            </Wrapper>
         </>
   );
 };
