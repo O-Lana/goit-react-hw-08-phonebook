@@ -1,10 +1,18 @@
-import { Wrapper, Text, Button } from "./UserMenu.styled";
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserEmail } from 'redux/auth/authSelector';
+import authOperations from 'redux/auth/authOperation';
+import { Wrapper, Text, Button } from './UserMenu.styled';
 
 export const UserMenu = () => {
-    return (
-        <Wrapper>
-            <Text>Добро пожаловать!</Text>
-            <Button type="button">Logout</Button>
-        </Wrapper>
-    )
-}
+  const userEmail = useSelector(getUserEmail);
+  const dispatch = useDispatch();
+
+  return (
+    <Wrapper>
+      <Text>Welcome, {userEmail}!</Text>
+      <Button type="button" onClick={() => dispatch(authOperations.logOut())}>
+        Logout
+      </Button>
+    </Wrapper>
+  );
+};
