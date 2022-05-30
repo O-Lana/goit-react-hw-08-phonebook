@@ -1,10 +1,15 @@
+import { useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth/authSelector';
+
 import { Link } from './Navigation.styled';
 
 export const Navigation = () => {
+  const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/contacts">Phonebook</Link>
+      {isLoggedIn ? <Link to="/contacts">Phonebook</Link> : null}
+      {/* <Link to="/contacts">Phonebook</Link> */}
     </nav>
   );
 };
