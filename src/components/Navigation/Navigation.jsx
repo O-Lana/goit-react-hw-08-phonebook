@@ -8,7 +8,7 @@ export const Navigation = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
-      {isLoggedIn ? <Link to="/contacts">Phonebook</Link> : null}
+      {isLoggedIn && <Link to="/contacts">Phonebook</Link>}
       {/* <Link to="/contacts">Phonebook</Link> */}
     </nav>
   );
