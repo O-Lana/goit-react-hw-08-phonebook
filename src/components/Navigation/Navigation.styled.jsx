@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Link = styled(NavLink)`
   display: inline-block;
   font-size: 18px;
-  color: var(--text-color);
+  color: #555;
   font-weight: 500;
   text-decoration: none;
   padding: 17px 6px;
@@ -13,10 +13,10 @@ export const Link = styled(NavLink)`
   }
   :hover,
   :focus {
-    color: var(--accent-color);
+    color: #f32160;
   }
   &.active {
-    color: var(--accent-color);
-    border-bottom: 4px solid var(--accent-color);
+    color: #f32160;
+    border-bottom: 4px solid #f32160;
   }
 `;
