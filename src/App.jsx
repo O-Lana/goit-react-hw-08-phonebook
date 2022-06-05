@@ -11,6 +11,11 @@ import authOperations from 'redux/auth/authOperation';
 import PrivateRoute from 'components/Routes/PrivateRoute';
 import PublicRoute from 'components/Routes/PublicRoute';
 
+//TODO
+//lazy
+//сохранение текущей страницы?
+//редактирование
+
 export const App = () => {
   const dispatch = useDispatch();
 
@@ -22,7 +27,6 @@ export const App = () => {
     <Suspense fallback="">
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<HomeView />} /> */}
           <Route
             index
             element={
@@ -39,7 +43,6 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-          {/* <Route path="contacts" element={<ContactsView />} /> */}
           <Route
             path="register"
             element={
@@ -57,7 +60,6 @@ export const App = () => {
               </PublicRoute>
             }
           />
-          {/* <Route path="login" element={<LoginView />} /> */}
           <Route
             path="*"
             element={
@@ -66,7 +68,6 @@ export const App = () => {
               </PublicRoute>
             }
           />
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Route>
       </Routes>
     </Suspense>

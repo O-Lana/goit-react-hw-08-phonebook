@@ -1,25 +1,10 @@
 import { useState } from 'react';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsApi';
 import toast from 'react-hot-toast';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from 'common/theme';
+import { grey } from '@mui/material/colors';
 import { Container, Button, TextField, Box, Typography } from '@mui/material';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#bfcbd0',
-      main: '#b0bec5',
-      dark: '#7b8589',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#f54d7f',
-      main: '#f32160',
-      dark: '#aa1743',
-      contrastText: '#fff',
-    },
-  },
-});
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -87,17 +72,16 @@ export function ContactForm() {
             Create new contact
           </Typography>
 
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 3 }}
-          >
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <TextField
               inputProps={{
                 pattern:
                   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+                //  title={
+                //     "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, etc.",
               }}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               color="secondary"
               margin="normal"
               required
@@ -137,6 +121,7 @@ export function ContactForm() {
               sx={{
                 mt: 3,
                 mb: 2,
+                bgcolor: grey[500],
                 '&:hover': {
                   bgcolor: 'secondary.main',
                   contrastText: 'secondary.contrastText',

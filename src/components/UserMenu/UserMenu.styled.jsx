@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,7 +20,6 @@ export const Button = styled.button`
   padding: 3px 10px;
   border: 1px solid #555;
   border-radius: 10px;
-  /* text-decoration: none; */
   font-weight: 500;
 
   :hover,
@@ -31,15 +29,3 @@ export const Button = styled.button`
     border: 1px solid transparent;
   }
 `;
-
-// container: {
-// display: 'flex',
-// alignItems: 'center',
-//   },
-//   avatar: {
-//     marginRight: 4,
-//   },
-//   name: {
-//     fontWeight: 700,
-//     marginRight: 12,
-//   },
