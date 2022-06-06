@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useGetContactsQuery, useAddContactMutation } from 'redux/contactsApi';
-import toast from 'react-hot-toast';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from 'common/theme';
 import { grey } from '@mui/material/colors';
 import { Container, Button, TextField, Box, Typography } from '@mui/material';
+import toast from 'react-hot-toast';
 
 export function ContactForm() {
   const [name, setName] = useState('');
@@ -77,11 +77,9 @@ export function ContactForm() {
               inputProps={{
                 pattern:
                   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-                //  title={
-                //     "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, etc.",
+                title:
+                  "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
               }}
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               color="secondary"
               margin="normal"
               required
@@ -89,7 +87,6 @@ export function ContactForm() {
               id="name"
               label="Name"
               name="name"
-              autoComplete="name"
               autoFocus
               type="text"
               value={name}
@@ -100,6 +97,8 @@ export function ContactForm() {
               inputProps={{
                 pattern:
                   '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
+                title:
+                  'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
               }}
               color="secondary"
               margin="normal"
@@ -109,7 +108,6 @@ export function ContactForm() {
               label="Phone number"
               type="tel"
               id="number"
-              autoComplete="number"
               value={number}
               onChange={handleInputChange}
             />

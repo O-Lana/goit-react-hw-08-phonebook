@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/authOperation';
 import { theme } from 'common/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
+import authOperations from 'redux/auth/authOperation';
 import {
   Container,
   Avatar,
@@ -11,26 +11,7 @@ import {
   TextField,
   Box,
   Typography,
-  Link,
 } from '@mui/material';
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Go IT
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -110,7 +91,6 @@ export const RegisterForm = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
               type="email"
               value={email}
               onChange={handleChange}
@@ -148,7 +128,6 @@ export const RegisterForm = () => {
             </Button>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

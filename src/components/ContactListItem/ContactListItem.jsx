@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
+import { grey } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
-import { grey } from '@mui/material/colors';
 
 export const ContactListItem = ({ id, name, number }) => {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();

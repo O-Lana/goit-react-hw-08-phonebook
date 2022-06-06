@@ -12,57 +12,64 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
-    alert('Something went wrong, please try again');
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-const logIn = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/users/login', credentials);
-    token.set(data.token);
-    console.log((data, 'data in login thunk'));
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
-    alert('Something went wrong, please try again');
+const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      token.set(data.token);
+      console.log((data, 'data in login thunk'));
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
-});
+);
 
-const logOut = createAsyncThunk('auth/logout', async () => {
-  try {
-    await axios.post('/users/logout');
-    token.unset();
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
-    alert('Something went wrong, please try again');
+const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
-const refreshUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
+const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const persistedToken = state.auth.token;
 
-  if (persistedToken === null) {
-    console.log('Токена нет, уходим из fetchCurrentUser');
-    return thunkAPI.rejectWithValue();
+    if (persistedToken === null) {
+      return rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
-
-  token.set(persistedToken);
-  try {
-    const { data } = await axios.get('/users/current');
-    return data;
-  } catch (error) {
-    // TODO: Добавить обработку ошибки error.message
-    alert('Something went wrong, please try again');
-  }
-});
+);
 
 const authOperations = {
   register,

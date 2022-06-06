@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from 'redux/auth/authOperation';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from 'common/theme';
 import { grey } from '@mui/material/colors';
+import authOperations from 'redux/auth/authOperation';
 import {
   Container,
   Avatar,
@@ -14,24 +14,6 @@ import {
   Grid,
   Link,
 } from '@mui/material';
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Go IT
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -147,7 +129,6 @@ export const LoginForm = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );

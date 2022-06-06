@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserEmail } from 'redux/auth/authSelector';
-import authOperations from 'redux/auth/authOperation';
 import { Wrapper, Text } from './UserMenu.styled';
-import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { Button } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import authOperations from 'redux/auth/authOperation';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 
 export const UserMenu = () => {
   const userEmail = useSelector(getUserEmail);
@@ -27,5 +27,3 @@ export const UserMenu = () => {
     </Wrapper>
   );
 };
-
-//todo обернуть провайдером
