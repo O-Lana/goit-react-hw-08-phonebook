@@ -112,7 +112,7 @@ export const LoginForm = () => {
               <Grid item xs></Grid>
               <Grid item>
                 <Link
-                  href="/register"
+                  href="/goit-react-hw-08-phonebook/register"
                   variant="body2"
                   underline="hover"
                   sx={{

@@ -30,18 +30,20 @@ export const App = () => {
   return (
     !isFetchingCurrentUser && (
       <>
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            className: '',
-            style: {
-              border: '1px solid #f54d7f',
-              padding: '16px',
-              color: '#f54d7f',
-            },
-          }}
-          autoClose={3000}
-        />
+        {error && (
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              className: '',
+              style: {
+                border: '1px solid #f54d7f',
+                padding: '16px',
+                color: '#f54d7f',
+              },
+            }}
+            autoClose={3000}
+          />
+        )}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route
