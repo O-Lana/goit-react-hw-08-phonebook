@@ -82,7 +82,7 @@ export const App = () => {
               path="*"
               element={
                 <PublicRoute>
-                  <Navigate to="/" />
+                  <Navigate to="/contacts" />
                 </PublicRoute>
               }
             />
